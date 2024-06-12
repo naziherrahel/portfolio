@@ -10,6 +10,10 @@
   #projects {
     height: fit-content;
   }
+  .certification-pic {
+    max-width: 250px;
+    height: auto;
+  }
 }
 
 @media screen and (max-width: 1200px) {
@@ -44,6 +48,10 @@
   }
   .about-containers {
     margin-top: 0;
+  }
+  .certification-pic {
+    max-width: 200px;
+    height: auto;
   }
 }
 
@@ -99,5 +107,9 @@
   }
   .text-container {
     text-align: justify;
+  }
+  .certification-pic {
+    max-width: 150px;
+    height: auto;
   }
 }
