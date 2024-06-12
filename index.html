@@ -7,15 +7,17 @@
   <title>Connect with Me</title>
   <style>
     body {
-      background-color: #f5f5f5;
+      background-color: #e0e0e0;
       font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
     }
     .container {
       max-width: 800px;
-      margin: auto;
+      margin: 3rem auto;
       padding: 2rem;
       background-color: #fff;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
       border-radius: 8px;
       text-align: center;
     }
@@ -25,25 +27,25 @@
       height: 150px;
       object-fit: cover;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      margin: 0 auto 1rem;
+      margin: 1rem auto;
     }
     .bio, .certifications, .contact-info {
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
     }
     .certifications img {
-      width: 100px;
-      height: 100px;
+      width: 150px;
+      height: 150px;
       object-fit: cover;
       border-radius: 8px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      margin: 0 10px;
+      margin: 10px;
     }
     .contact-info ul {
       list-style: none;
       padding: 0;
     }
     .contact-info li {
-      margin: 0.5rem 0;
+      margin: 1rem 0;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -54,8 +56,27 @@
     .contact-info a {
       text-decoration: none;
       color: #0073e6;
+      display: flex;
+      align-items: center;
     }
     .contact-info a:hover {
+      text-decoration: underline;
+    }
+    .contact-info a img {
+      width: 24px;
+      height: 24px;
+    }
+    footer {
+      margin-top: 2rem;
+      padding: 1rem;
+      background-color: #f8f8f8;
+      text-align: center;
+    }
+    footer a {
+      color: #0073e6;
+      text-decoration: none;
+    }
+    footer a:hover {
       text-decoration: underline;
     }
   </style>
@@ -87,8 +108,8 @@
       <div class="certifications">
         <h3>Certifications</h3>
         <figure>
-          <img src="tensorflow.jpg" alt="Certification 1 Logo" />
-          <img src="diploma.png" alt="Certification 2 Logo" />
+          <img src="diploma.png" alt="Certification 1 Logo" />
+          <img src="tensorflow.jpg" alt="Certification 2 Logo" />
         </figure>
       </div>
       <div class="contact-info">
@@ -104,7 +125,7 @@
     </section>
   </main>
 
-  <footer class="container">
+  <footer>
     <small><a href="#">Privacy Policy</a> • <a href="#">Terms of Service</a></small>
   </footer>
 </body>
