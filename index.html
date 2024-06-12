@@ -11,6 +11,7 @@
       font-family: 'Arial', sans-serif;
       margin: 0;
       padding: 0;
+      transition: background-color 0.5s ease;
     }
     .container {
       max-width: 800px;
@@ -20,6 +21,8 @@
       box-shadow: 0 0 20px rgba(0,0,0,0.1);
       border-radius: 8px;
       text-align: center;
+      opacity: 0;
+      transition: opacity 1s ease;
     }
     .profile-image {
       border-radius: 50%;
@@ -39,6 +42,9 @@
       border-radius: 8px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       margin: 10px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease, transform 1s ease;
     }
     .contact-info ul {
       list-style: none;
@@ -79,6 +85,45 @@
     footer a:hover {
       text-decoration: underline;
     }
+    .tooltip {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+    }
+    .tooltip .tooltiptext {
+      visibility: hidden;
+      width: 120px;
+      background-color: #555;
+      color: #fff;
+      text-align: center;
+      border-radius: 5px;
+      padding: 5px;
+      position: absolute;
+      z-index: 1;
+      bottom: 125%; 
+      left: 50%;
+      margin-left: -60px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .tooltip:hover .tooltiptext {
+      visibility: visible;
+      opacity: 1;
+    }
+    .dark-mode {
+      background-color: #121212;
+      color: #ffffff;
+    }
+    .dark-mode .container {
+      background-color: #1e1e1e;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    }
+    .dark-mode footer {
+      background-color: #1e1e1e;
+    }
+    .dark-mode a {
+      color: #64b5f6;
+    }
   </style>
 </head>
 <body>
@@ -87,10 +132,11 @@
       <li><strong>Nazih Errahel</strong></li>
     </ul>
     <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#" role="button">Contact</a></li>
+      <li><a href="#" class="nav-link">Home</a></li>
+      <li><a href="#" class="nav-link">About</a></li>
+      <li><a href="#" class="nav-link" role="button">Contact</a></li>
     </ul>
+    <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
   </nav>
 
   <main class="container">
@@ -108,18 +154,18 @@
       <div class="certifications">
         <h3>Certifications</h3>
         <figure>
-          <img src="diploma.png" alt="Certification 1 Logo" />
-          <img src="tensorflow.jpg" alt="Certification 2 Logo" />
+          <img src="diploma.png" alt="Certification 1 Logo" class="certification" />
+          <img src="tensorflow.jpg" alt="Certification 2 Logo" class="certification" />
         </figure>
       </div>
       <div class="contact-info">
         <h3>Contact Information</h3>
         <ul>
-          <li><a href="mailto:erraheln@ex.istu.edu"><img src="https://img.icons8.com/ios-glyphs/30/000000/email.png" alt="Email Icon"/> erraheln@ex.istu.edu</a></li>
-          <li><a href="tel:+79996864749"><img src="https://img.icons8.com/ios-glyphs/30/000000/phone.png" alt="Phone Icon"/> +7 999 686 4749</a></li>
-          <li><a href="https://www.linkedin.com/in/yourprofile"><img src="https://img.icons8.com/ios-glyphs/30/000000/linkedin.png" alt="LinkedIn Icon"/> LinkedIn</a></li>
-          <li><a href="https://www.github.com/naziherrahel"><img src="https://img.icons8.com/ios-glyphs/30/000000/github.png" alt="GitHub Icon"/> GitHub</a></li>
-          <li><a href="https://www.yourwebsite.com"><img src="https://img.icons8.com/ios-glyphs/30/000000/domain.png" alt="Website Icon"/> Website/Portfolio</a></li>
+          <li><a href="mailto:erraheln@ex.istu.edu" class="tooltip"><img src="https://img.icons8.com/ios-glyphs/30/000000/email.png" alt="Email Icon"/><span class="tooltiptext">Email Me</span> erraheln@ex.istu.edu</a></li>
+          <li><a href="tel:+79996864749" class="tooltip"><img src="https://img.icons8.com/ios-glyphs/30/000000/phone.png" alt="Phone Icon"/><span class="tooltiptext">Call Me</span> +7 999 686 4749</a></li>
+          <li><a href="https://www.linkedin.com/in/yourprofile" class="tooltip"><img src="https://img.icons8.com/ios-glyphs/30/000000/linkedin.png" alt="LinkedIn Icon"/><span class="tooltiptext">LinkedIn</span> LinkedIn</a></li>
+          <li><a href="https://www.github.com/naziherrahel" class="tooltip"><img src="https://img.icons8.com/ios-glyphs/30/000000/github.png" alt="GitHub Icon"/><span class="tooltiptext">GitHub</span> GitHub</a></li>
+          <li><a href="https://www.yourwebsite.com" class="tooltip"><img src="https://img.icons8.com/ios-glyphs/30/000000/domain.png" alt="Website Icon"/><span class="tooltiptext">Website</span> Website/Portfolio</a></li>
         </ul>
       </div>
     </section>
@@ -128,5 +174,33 @@
   <footer>
     <small><a href="#">Privacy Policy</a> • <a href="#">Terms of Service</a></small>
   </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelector('.container').style.opacity = '1';
+      const certifications = document.querySelectorAll('.certification');
+      certifications.forEach((cert, index) => {
+        setTimeout(() => {
+          cert.style.opacity = '1';
+          cert.style.transform = 'translateY(0)';
+        }, 500 + (index * 200));
+      });
+    });
+
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(e.target.getAttribute('href'));
+        window.scrollTo({
+          top: target ? target.offsetTop : 0,
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
 </body>
 </html>
